@@ -1,0 +1,16 @@
+.audioPlayer{
+    align-items: center;
+    display: flex;
+    width: 700px;
+  }
+
+.duration, .currentTime{
+    display: inline-flex;
+}
+
+.progressBar {
+    --seek-before-width: 0;
+  }
+
+
+ 

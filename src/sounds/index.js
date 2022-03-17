@@ -1,0 +1,9 @@
+export const src1 = require("./s1.mp3");
+export const src2 = require("./s2.mp3");
+export const src3 = require("./s3.mp3");
+export const src4 = require("./s4.mp3");
+export const src5 = require("./s5.mp3");
+export const src6 = require("./s6.mp3");
+export const src7 = require("./s7.mp3");
+export const src8 = require("./s8.mp3");
+export const src9 = require("./s9.mp3");
