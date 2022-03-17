@@ -60,16 +60,18 @@ const AudioPlayer = ({src, playing, isLoop}) => {
 
   return (
     <div className={styles.AudioPlayer}>
-      
         <audio ref={audios} preload="metadata">
             <source src={src} />
         </audio>
-        <div className={styles.currentTime}>{calcTime(currentTime)}</div>
+        <div style={{display:"flex", flexDirection:"row", justifyContent:"center"}}>
+         <div className={styles.currentTime}>{calcTime(currentTime)}</div>
         <div><input type="range" disabled ref={progressBar} className={styles.progressBar} defaultValue="0" onChange={changeRange}/>
         <div className={styles.duration}>{(duration && !isNaN(duration)) && calcTime(duration) }</div>
         <Switch isTog={isTog} onTog={()=>setIsTog(!isTog) }>    
         </Switch>
         </div>
+        </div>
+        
     </div>
   )
 }
