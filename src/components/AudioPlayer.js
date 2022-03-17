@@ -62,6 +62,7 @@ const AudioPlayer = ({src, playing, isLoop}) => {
     <div className={styles.AudioPlayer}>
         <audio ref={audios} preload="metadata">
             <source src={src} />
+            
         </audio>
         <div style={{display:"flex", flexDirection:"row", justifyContent:"center"}}>
          <div className={styles.currentTime}>{calcTime(currentTime)}</div>
