@@ -8,10 +8,12 @@ import { AudioPlayer } from "./components/AudioPlayer";
 import { Commands } from "./components/Commands";
 
 function App() {
+  
   const audioref = useRef();
 
   const [playing, setPlaying] = useState(false);
   const [Loop, setLoop] = useState(true);
+
   return (
     <div className="App">
       <AudioPlayer ref={audioref} src={src1} playing={playing} isLoop={Loop}></AudioPlayer>

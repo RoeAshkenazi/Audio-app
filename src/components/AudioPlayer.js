@@ -9,8 +9,8 @@ const AudioPlayer = ({src, playing, isLoop}) => {
     const [isTog, setIsTog] = useState(true);
     
   // references 
-    const audios = useRef();        // reference our audio component
-    const progressBar = useRef();   // reference our progress bar
+    const audios = useRef();        // reference audio component
+    const progressBar = useRef();   // reference progress bar
     const animationRef = useRef();  // reference the animation
 
   // functions
@@ -28,10 +28,14 @@ const AudioPlayer = ({src, playing, isLoop}) => {
     const sec = Math.floor(audios.current.duration)    
     setDuration(sec);
     progressBar.current.max=sec;
-     audios.current.loop = isLoop;
+    audios.current.loop = isLoop;
     if(playing) {
         audios.current.play();
         animationRef.current = requestAnimationFrame(whilePlaying);
+        if(audios.current.ended && !audios.current.loop)
+        {
+          // should turn playing to false and change button to FaPause;          
+        }
     }
     else
     {
@@ -57,12 +61,11 @@ const AudioPlayer = ({src, playing, isLoop}) => {
     setCurrentTime(progressBar.current.value);
   }
 
-
   return (
     <div className={styles.AudioPlayer}>
         <audio ref={audios} preload="metadata">
             <source src={src} />
-            
+
         </audio>
         <div style={{display:"flex", flexDirection:"row", justifyContent:"center"}}>
          <div className={styles.currentTime}>{calcTime(currentTime)}</div>
@@ -71,11 +74,9 @@ const AudioPlayer = ({src, playing, isLoop}) => {
         <Switch isTog={isTog} onTog={()=>setIsTog(!isTog) }>    
         </Switch>
         </div>
-        </div>
-        
+        </div>        
     </div>
   )
 }
- 
 
 export { AudioPlayer }
